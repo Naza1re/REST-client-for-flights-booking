@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Аэропорт</th>
+        <th>Город</th>
+        <th>Улица</th>
+        <th>Рейсы</th>
+    </tr>
+
+    <tr th:each="airport : ${allAirports}">
+        <td th:text="${airport.name}">101</td>
+        <td th:text="${airport.city}">2</td>
+        <td th:text="${airport.street}">Отель</td>
+        <td><a th:href="@{'/' + ${airport.name} + '/flights/all-flights'}" class="btn-book">Профиль</a></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

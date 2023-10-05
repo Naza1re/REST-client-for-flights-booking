@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>Рейс</th>
+    <th>Дата отправления</th>
+    <th>Время отправления</th>
+    <th>Пилот</th>
+
+  </tr>
+
+  <tr th:each="flights : ${flightsOfAirport}">
+    <td th:text="${flights.name}">101</td>
+    <td th:text="${flights.departure_date}">2</td>
+    <td th:text="${flights.departure_time}">Отель</td>
+    <td th:text="${flights.pilot.name}">Отель</td>
+  </tr>
+</table>
+
+</body>
+</html>
