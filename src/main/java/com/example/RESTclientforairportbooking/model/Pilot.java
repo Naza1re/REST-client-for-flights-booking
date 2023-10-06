@@ -1,5 +1,6 @@
 package com.example.RESTclientforairportbooking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +27,7 @@ public class Pilot {
         this.name = name;
         this.age = age;
     }
+    private Airport airport;
 
 
     public Pilot() {

@@ -18,6 +18,7 @@ public class FlightsController {
     public String getAllFlightsOfAirport(@PathVariable String airport_name, Model model) throws IOException {
         List<Flights> flightsOfAirport = FlightsAPI.getAllFlightsOfAirport(airport_name);
         model.addAttribute("flightsOfAirport",flightsOfAirport);
+        model.addAttribute("airport",airport_name);
         return "flights";
     }
 }

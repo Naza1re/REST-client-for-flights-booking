@@ -30,6 +30,10 @@ public class Airport {
 
     private List<Plane> planeList;
 
+    private List<Pilot> pilotList;
+
+
+
 
 
 }

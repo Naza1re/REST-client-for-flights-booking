@@ -1,13 +1,14 @@
 package com.example.RESTclientforairportbooking.controllers;
 
 import com.example.RESTclientforairportbooking.api.AirportAPI;
+import com.example.RESTclientforairportbooking.api.PilotAPI;
+import com.example.RESTclientforairportbooking.api.PlaneAPI;
 import com.example.RESTclientforairportbooking.model.Airport;
+import com.example.RESTclientforairportbooking.model.Pilot;
+import com.example.RESTclientforairportbooking.model.Plane;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,6 +29,17 @@ public class AirportController {
         AirportAPI.save(airport);
         return "main";
     }
+    @GetMapping("/{airport_name}")
+    public String getAirport(@PathVariable String airport_name,Model model) throws IOException {
+        Airport airport = AirportAPI.getAirport(airport_name);
+        model.addAttribute("airport",airport);
+        List<Plane> planeList = PlaneAPI.getAllPlaneOfAirport(airport_name);
+        model.addAttribute("plane_list",planeList);
+        List<Pilot> pilotList = PilotAPI.getAllPilotOfAirport(airport_name);
+        model.addAttribute("pilot_list",pilotList);
+        return "airport";
+    }
+
 
 
 

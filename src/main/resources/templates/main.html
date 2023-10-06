@@ -1,26 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Аэропорты</title>
+    <style>
+        body {
+            background-image: url('https://kartinkin.net/uploads/posts/2021-07/1625242292_41-kartinkin-com-p-fon-aeroport-krasivie-foni-49.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blur: 250px;
+        }
+
+        table {
+            width: 80%;
+            margin: 250px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            color: #333;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .btn-book {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .btn-book:hover {
+            background-color: #45a049;
+        }
+        .airport{
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+
+
+
+        }
+
+    </style>
 </head>
+
 <body>
+
+
+<a class="airport">Booking-flights</a>
 <table>
     <tr>
         <th>Аэропорт</th>
         <th>Город</th>
         <th>Улица</th>
+        <th>Информация</th>
         <th>Рейсы</th>
     </tr>
 
-    <tr th:each="airport : ${allAirports}">
-        <td th:text="${airport.name}">101</td>
-        <td th:text="${airport.city}">2</td>
-        <td th:text="${airport.street}">Отель</td>
-        <td><a th:href="@{'/' + ${airport.name} + '/flights/all-flights'}" class="btn-book">Профиль</a></td>
+    <tr class="airport" th:each="airport : ${allAirports}">
+        <td th:text="${airport.name}">Название аэропорта</td>
+        <td th:text="${airport.city}">Город</td>
+        <td th:text="${airport.street}">Улица</td>
+        <td><a th:href="@{'/airports/' + ${airport.name}}" class="btn-book">Информация</a></td>
+        <td><a th:href="@{'/' + ${airport.name} + '/flights/all-flights'}" class="btn-book">Рейсы</a></td>
     </tr>
-
 </table>
-
 </body>
+
 </html>

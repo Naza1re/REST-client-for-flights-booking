@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -34,13 +35,22 @@ public class AirportAPI {
 
         return airports;
     }
+    public static Airport getAirport(String airport_name) throws IOException {
+        HttpClient client = HttpClients.createDefault();
+        HttpGet request = new HttpGet("http://localhost:8081/airports/"+airport_name);
+        HttpResponse response = client.execute(request);
+        String json = EntityUtils.toString(response.getEntity());
+        ObjectMapper objectMapper = new ObjectMapper();
+        Airport airport = objectMapper.readValue(json, new TypeReference<Airport>() {});
+
+        return airport;
+    }
 
 
     public static void save(Airport airport) throws IOException {
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost("http://airports/add-airport");
-        StringEntity input = new StringEntity("product");
-        post.setEntity(input);
+        post.setEntity((HttpEntity) airport);
         HttpResponse response = client.execute(post);
     }
 }
