@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking seats</title>
+</head>
+<body>
+
+
+
+<table>
+    <tr>
+        <th>Место</th>
+    </tr>
+
+    <tr th:each="passenger : ${passengerList}">
+        <td  th:text="${passenger.seat}"></td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>

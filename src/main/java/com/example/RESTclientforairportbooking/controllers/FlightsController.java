@@ -21,4 +21,6 @@ public class FlightsController {
         model.addAttribute("airport",airport_name);
         return "flights";
     }
+
+
 }

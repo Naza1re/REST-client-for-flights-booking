@@ -48,6 +48,7 @@
     <th>Время отправления</th>
     <th>Пилот</th>
     <th>Самолет</th>
+    <th>Бронирование</th>
 
   </tr>
 
@@ -55,8 +56,9 @@
     <td  th:text="${flights.name}"></td>
     <td th:text="${flights.departure_date}"></td>
     <td th:text="${flights.departure_time}"></td>
-    <td th:text="${flights.pilot != null ? flights.pilot.name : 'Unknown'}"></td>
-    <td th:text="${flights.plane != null ? flights.plane.name : 'Unknown'}"></td>
+    <td th:text="${flights.pilot != null ? flights.pilot.name : 'Нет пилота'}"></td>
+    <td th:text="${flights.plane != null ? flights.plane.name : 'Нет Самолета'}"></td>
+      <td><a th:href="@{'/' + ${airport} + '/flights/'+${flights.id}+'/booking'}" class="btn-book">Забронировать</a></td>
   </tr>
 </table>
 
