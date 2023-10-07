@@ -2,12 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${airport.name}"></title>
+    <style>
+
+
+        h1{
+            text-align: center;
+            padding: 50px;
+            color: #7f75e0;
+
+        }
+        .plane{
+
+        }
+
+
+    </style>
 </head>
 <body>
+
 <h1><span th:text="${airport.name}"></span></h1>
-<h1><span th:text="${pilot_list}"></span></h1>
-<h1><span th:text="${plane_list}"></span></h1>
+<a class="plane">Наши самолеты</a>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Айдишник самолета</th>
+
+
+    </tr>
+
+    <tr th:each="planeList : ${plane_list}">
+        <td th:text="${planeList.name}">101</td>
+        <td th:text="${planeList.id}">2</td>
+
+    </tr>
+</table>
+
+<a>Наши Пилоты</a>
+
+
+
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Стаж</th>
+
+
+    </tr>
+
+    <tr th:each="pilotList : ${pilot_list}">
+        <td th:text="${pilotList.name}">101</td>
+        <td th:text="${pilotList.age}">2</td>
+
+    </tr>
+</table>
+
+
 
 </body>
 </html>

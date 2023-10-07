@@ -20,7 +20,6 @@ public class AirportController {
     @GetMapping("/all-airports")
     public String getAllAirports(Model model) throws IOException {
         List<Airport> allAirports = AirportAPI.getAllAirports();
-        System.out.println(allAirports);
         model.addAttribute("allAirports",allAirports);
         return "main";
     }

@@ -24,7 +24,7 @@ public class PilotAPI {
 
         ObjectMapper objectMapper = new ObjectMapper();
         List<Pilot> pilots = objectMapper.readValue(json, new TypeReference<List<Pilot>>() {});
-        System.out.println(pilots);
+
 
         return pilots;
 

@@ -12,9 +12,30 @@
             background-blur: 250px;
         }
 
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 50px;
+            font-size: 36px;
+            color: #7f75e0;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-top: 20px;
+            width:100%;
+        }
+
+        .search-input {
+            padding: 10px;
+            font-size: 16px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
         table {
             width: 80%;
-            margin: 250px auto;
+            margin: 20px auto;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 20px;
@@ -24,14 +45,14 @@
         }
 
         th, td {
-            padding: 15px;
+            padding: 5px;
             text-align: center;
             font-size: 16px;
             color: #333;
         }
 
         .btn-book {
-            background-color: #4CAF50;
+            background-color: #0815ec;
             color: white;
             padding: 10px 20px;
             text-align: center;
@@ -41,23 +62,24 @@
         }
 
         .btn-book:hover {
-            background-color: #45a049;
+            background-color: #26d513;
         }
-        .airport{
+
+        .airport {
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-            font-weight: 700;
-
-
-
+            font-weight: 400;
         }
 
     </style>
 </head>
 
 <body>
+<h1>BOOKING FLIGHTS</h1>
 
+<div class="search-bar">
+    <input type="text" class="search-input" placeholder="Куда летим">
+</div>
 
-<a class="airport">Booking-flights</a>
 <table>
     <tr>
         <th>Аэропорт</th>

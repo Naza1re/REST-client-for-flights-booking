@@ -17,6 +17,8 @@ public class Flights   {
 
     private String name;
 
+    private boolean active;
+
 
     private String departure_date;
 

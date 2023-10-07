@@ -26,7 +26,6 @@ public class PlaneAPI {
 
         ObjectMapper objectMapper = new ObjectMapper();
         List<Plane> planeList = objectMapper.readValue(json, new TypeReference<List<Plane>>() {});
-        System.out.println(planeList);
 
         return planeList;
     }

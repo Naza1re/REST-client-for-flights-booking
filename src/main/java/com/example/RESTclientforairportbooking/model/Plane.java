@@ -23,9 +23,11 @@ public class Plane {
         this.name = name;
 
     }
+    private List<Passenger> passengerList;
     @JsonIgnore
-
     private Airport airport;
+
+
 
 
 

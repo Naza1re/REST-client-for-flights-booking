@@ -22,7 +22,7 @@ public class Reservation {
 
     private Flights flights;
 
-
+    private List<Passenger> passengers;
 
     private String seat;
 
