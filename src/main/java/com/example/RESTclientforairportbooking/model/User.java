@@ -26,9 +26,7 @@ public class User {
 
     private String phone;
 
-    @JsonIgnore
 
-    private List<Reservation> reservations;
 
 
     public User(String name, String email, String phone) {

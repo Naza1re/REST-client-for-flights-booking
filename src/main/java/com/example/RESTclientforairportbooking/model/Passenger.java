@@ -18,9 +18,7 @@ public class Passenger {
     private Plane plane;
 
 
-    private  Reservation reservation;
-
-
+    private User user;
     private boolean free;
 
     public boolean isFree(){

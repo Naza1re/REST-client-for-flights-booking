@@ -17,15 +17,15 @@ public class ReservationController {
 
     @GetMapping("/passengers")
     public String getBookingPage(@PathVariable String airport_name, @PathVariable long id, Model model) throws IOException {
-        List<Passenger> passengerList = PassengerAPI.getAllPassengersOfPlane(id,airport_name);
+        List<Passenger> passengerList = PassengerAPI.   getAllPassengersOfPlane(id,airport_name);
         model.addAttribute("passengerList",passengerList);
-        return "booking";
+        return "choose_seat";
     }
-    @GetMapping("/passengers/{id}")
-    public String getReservationSeatPage(@PathVariable String airport_name, @PathVariable long id, Model model) throws IOException {
+    @GetMapping("/passengers/{id_seat}")
+    public String getReservationSeatPage(@PathVariable String airport_name, @PathVariable long id, Model model, @PathVariable String id_seat) throws IOException {
         List<Passenger> passengerList = PassengerAPI.getAllPassengersOfPlane(id,airport_name);
         model.addAttribute("passengerList",passengerList);
-        return "booking";
+        return "choose_seat";
     }
 
 

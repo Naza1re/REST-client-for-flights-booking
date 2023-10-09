@@ -36,7 +36,7 @@ public class Flights   {
 
 
 
-    private List<Reservation> reservation;
+
 
     public Flights(String name, String departure_date, String departure_time, String arrival) {
         this.name = name;
