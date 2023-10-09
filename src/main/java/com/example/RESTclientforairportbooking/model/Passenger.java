@@ -19,11 +19,7 @@ public class Passenger {
 
 
     private User user;
-    private boolean free;
 
-    public boolean isFree(){
-        return this.free;
-    }
 
 
 
