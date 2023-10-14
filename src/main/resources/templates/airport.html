@@ -4,60 +4,79 @@
     <meta charset="UTF-8">
     <title th:text="${airport.name}"></title>
     <style>
-
-
-        h1{
-            text-align: center;
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px;
+        }
+        .pilots-table, .planes-table {
+            border: 1px solid #7f75e0;
+            border-radius: 10px;
             padding: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
             color: #7f75e0;
-
         }
-        .plane{
-
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
-
-
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #7f75e0;
+            color: white;
+        }
+        .plane {
+            color: #7f75e0;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
+<header th:insert="blogs/header :: header">
+</header>
 <body>
 
-<h1><span th:text="${airport.name}"></span></h1>
-<a class="plane">Наши самолеты</a>
-<table>
-    <tr>
-        <th>Название</th>
-        <th>Айдишник самолета</th>
+<h1 th:text="${airport.name}"></h1>
 
+<div class="container">
+    <div class="pilots-table">
+        <h2>Наши Пилоты</h2>
+        <table>
+            <tr>
+                <th>Имя</th>
+                <th>Стаж</th>
+            </tr>
+            <tr th:each="pilotList : ${pilot_list}">
+                <td th:text="${pilotList.name}">Имя пилота</td>
+                <td th:text="${pilotList.age}">Стаж</td>
+            </tr>
+        </table>
+    </div>
 
-    </tr>
-
-    <tr th:each="planeList : ${plane_list}">
-        <td th:text="${planeList.name}">101</td>
-        <td th:text="${planeList.id}">2</td>
-
-    </tr>
-</table>
-
-<a>Наши Пилоты</a>
-
-
-
-<table>
-    <tr>
-        <th>Имя</th>
-        <th>Стаж</th>
-
-
-    </tr>
-
-    <tr th:each="pilotList : ${pilot_list}">
-        <td th:text="${pilotList.name}">101</td>
-        <td th:text="${pilotList.age}">2</td>
-
-    </tr>
-</table>
-
-
+    <div class="planes-table">
+        <h2 class="plane">Наши самолеты</h2>
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Айдишник самолета</th>
+            </tr>
+            <tr th:each="planeList : ${plane_list}">
+                <td th:text="${planeList.name}">Название самолета</td>
+                <td th:text="${planeList.id}">Айдишник</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>

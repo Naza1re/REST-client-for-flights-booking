@@ -1,0 +1,59 @@
+<div  th:fragment="header">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ваш Заголовок Сайта</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    .wrap-logo {
+      padding: 20px;
+      background-color: rgba(0, 123, 255, 0.8); /* Синий цвет с прозрачностью 0.8 */
+    }
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    nav {
+      background-color: rgba(0, 123, 255, 0.5); /* Синий цвет с прозрачностью 0.9 */
+      overflow: hidden;
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+    nav a.active {
+      background-color: rgba(0, 86, 179, 0.9); /* Темный синий цвет с прозрачностью 0.9 */
+    }
+    nav a:hover {
+      background-color: rgba(0, 86, 179, 0.9); /* Темный синий цвет с прозрачностью 0.9 */
+    }
+  </style>
+</head>
+<body>
+<div th:fragment="header">
+  <header>
+    <div class="wrap-logo">
+      <a href="/airports/all-airports" class="logo">Booking flights</a>
+    </div>
+    <nav>
+      <a class="active" href="/airports/all-airports">Главная</a>
+      <a href="/contact">Контакты</a>
+      <a href="/about">О нас</a>
+    </nav>
+  </header>
+</div>
+</body>
+</html>
+</div>
