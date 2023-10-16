@@ -53,12 +53,12 @@
         <h2>Наши Пилоты</h2>
         <table>
             <tr>
-                <th>Имя</th>
+                <th>ФИО</th>
                 <th>Стаж</th>
             </tr>
             <tr th:each="pilotList : ${pilot_list}">
-                <td th:text="${pilotList.name}">Имя пилота</td>
-                <td th:text="${pilotList.age}">Стаж</td>
+                <td th:text="${pilotList.name}"></td>
+                <td th:text="${pilotList.age}"></td>
             </tr>
         </table>
     </div>

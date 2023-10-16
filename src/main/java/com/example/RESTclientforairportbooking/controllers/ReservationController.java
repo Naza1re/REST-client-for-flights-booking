@@ -1,12 +1,12 @@
 package com.example.RESTclientforairportbooking.controllers;
 
 import com.example.RESTclientforairportbooking.api.PassengerAPI;
+import com.example.RESTclientforairportbooking.api.ReservationAPI;
 import com.example.RESTclientforairportbooking.model.Passenger;
+import com.example.RESTclientforairportbooking.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,10 +23,16 @@ public class ReservationController {
         return "choose_seat";
     }
     @GetMapping("/passengers/{id_seat}")
-    public String getReservationSeatPage(@PathVariable String airport_name, @PathVariable long id, Model model, @PathVariable String id_seat) throws IOException {
-        List<Passenger> passengerList = PassengerAPI.getAllPassengersOfPlane(id,airport_name);
-        model.addAttribute("passengerList",passengerList);;
+    public String getReservationSeatPage(@PathVariable String airport_name, @PathVariable long id, Model model, @PathVariable long id_seat) throws IOException {
+        Passenger passenger = PassengerAPI.getPassengerById(airport_name,id,id_seat);
+        model.addAttribute("passengerList",passenger);;
         return "booking";
+    }
+    @PostMapping("/passengers/{id_seat}")
+    public String makeReservation(@ModelAttribute User user ,@PathVariable String airport_name, @PathVariable String id, @PathVariable String id_seat) throws IOException {
+        //Making transactional to with bank
+        ReservationAPI.makeReservation(id,id_seat,user.getName());
+        return "main";
     }
 
 
