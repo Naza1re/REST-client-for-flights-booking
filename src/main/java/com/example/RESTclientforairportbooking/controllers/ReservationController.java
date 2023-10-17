@@ -29,9 +29,8 @@ public class ReservationController {
         return "booking";
     }
     @PostMapping("/passengers/{id_seat}")
-    public String makeReservation(@ModelAttribute User user ,@PathVariable String airport_name, @PathVariable String id, @PathVariable String id_seat) throws IOException {
-        //Making transactional to with bank
-        ReservationAPI.makeReservation(id,id_seat,user.getName());
+    public String makeReservation(@RequestParam  String name ,@PathVariable String airport_name, @PathVariable String id, @PathVariable long id_seat) throws IOException {
+        ReservationAPI.makeReservation(id,id_seat,name,airport_name);
         return "main";
     }
 

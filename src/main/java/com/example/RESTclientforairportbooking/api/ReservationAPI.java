@@ -1,29 +1,29 @@
 package com.example.RESTclientforairportbooking.api;
 
-import com.example.RESTclientforairportbooking.model.Airport;
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.example.RESTclientforairportbooking.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPatch;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ReservationAPI {
-    public static void makeReservation(String id, String idSeat, String name) throws IOException {
 
+    public static void makeReservation(String id, long idSeat, String name, String airport_name) throws IOException {
+        User user  = UserAPI.getUserByName(name);
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/airports/a");
-        HttpResponse response = client.execute(request);
+        HttpPatch request = new HttpPatch( "http://localhost:8081/"+airport_name+"/flights/"+id+"/passenger/"+idSeat);
 
-        String json = EntityUtils.toString(response.getEntity());
+        request.setHeader("Content-Type", "application/json");
 
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Airport> airports = objectMapper.readValue(json, new TypeReference<List<Airport>>() {});
-
+        String jsonUser = objectMapper.writeValueAsString(user);
+        StringEntity entity = new StringEntity(jsonUser);
+        request.setEntity(entity);
+        HttpResponse response = client.execute(request);
         //working bad
     }
 }

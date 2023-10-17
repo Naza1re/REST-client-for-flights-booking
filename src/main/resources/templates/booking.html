@@ -56,11 +56,11 @@
 <body>
 <div class="form-container">
     <h2>Бронирование места</h2>
-    <form action="/" method="post">
-        <input type="text" class="form-input" placeholder="Ваше имя" required><br>
-        <input type="text" class="form-input" placeholder="Номер карты" required><br>
-        <input type="text" class="form-input" placeholder="CVV" required><br>
-        <input type="text" class="form-input" placeholder="Дата окончания (MM/YY)" required><br>
+    <form th:action="@{'/'+${airport_name}+'/flights/'+${id}+'/passengers/'+${id_seat}}" method="post">
+        <input type="text" name="name" class="form-input" placeholder="Ваше имя" required><br>
+        <input type="text" name="cardNumber" class="form-input" placeholder="Номер карты" required><br>
+        <input type="text" name="cvv" class="form-input" placeholder="CVV" required><br>
+        <input type="text" name="expiryDate" class="form-input" placeholder="Дата окончания (MM/YY)" required><br>
         <button type="submit" class="form-button">Забронировать</button>
     </form>
 </div>
