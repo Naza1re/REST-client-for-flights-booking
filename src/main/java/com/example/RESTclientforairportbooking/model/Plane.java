@@ -18,7 +18,6 @@ public class Plane {
 
     private String name;
 
-
     public Plane(String name,Pilot pilot){
         this.name = name;
 
@@ -26,6 +25,9 @@ public class Plane {
     private List<Passenger> passengerList;
     @JsonIgnore
     private Airport airport;
+
+
+    private int count_flights;
 
 
 

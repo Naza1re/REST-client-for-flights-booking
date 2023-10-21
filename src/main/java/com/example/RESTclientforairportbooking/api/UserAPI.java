@@ -16,7 +16,7 @@ public class UserAPI {
 
     public static User getUserByName(String name) throws IOException {
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/users/getUserByName/"+name);
+        HttpGet request = new HttpGet("http://localhost:8082/users/getUserByName/"+name);
 
         HttpResponse response = client.execute(request);
 

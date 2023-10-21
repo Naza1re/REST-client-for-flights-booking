@@ -22,7 +22,7 @@ public class FlightsAPI {
 
     public static List<Flights> getAllFlightsOfAirport(String airportName) throws IOException {
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/"+airportName+"/flights/all-flights");
+        HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/flights/all-flights");
 
         HttpResponse response = client.execute(request);
 

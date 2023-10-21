@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <style>
+        body {
+            background-image: url('https://w.forfun.com/fetch/06/06a7ac93561f5b14c3a40eeb49f5ad9f.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blur: 250px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .contacts {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 10px 0;
+        }
+
+        .contact-item i {
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<header th:insert="blogs/header :: header">
+</header>
+<body>
+<div class="container">
+    <h1>Наши контакты</h1>
+    <div class="contacts">
+        <div class="contact-item">
+            <i class="fa fa-phone"></i> +375-25-914-8-179
+        </div>
+        <div class="contact-item">
+            <i class="fa fa-envelope"></i> airports@mail.ru
+        </div>
+        <div class="contact-item">
+            <i class="fa fa-map-marker"></i> г.Минск ул.Бобруйская 17
+        </div>
+    </div>
+</div>
+
+<div class="error-message">
+    Что-то пошло не так? Пожалуйста, свяжитесь с нами по телефону или по электронной почте.
+</div>
+</body>
+
+</html>

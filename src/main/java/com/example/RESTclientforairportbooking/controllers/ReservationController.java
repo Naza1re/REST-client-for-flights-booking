@@ -4,6 +4,7 @@ import com.example.RESTclientforairportbooking.api.PassengerAPI;
 import com.example.RESTclientforairportbooking.api.ReservationAPI;
 import com.example.RESTclientforairportbooking.model.Passenger;
 import com.example.RESTclientforairportbooking.model.User;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

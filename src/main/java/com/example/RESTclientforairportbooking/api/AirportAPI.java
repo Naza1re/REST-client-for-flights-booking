@@ -25,7 +25,7 @@ public class AirportAPI {
 
     public static List<Airport> getAllAirports() throws IOException {
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/airports/all-airports");
+        HttpGet request = new HttpGet("http://localhost:8082/airports/all-airports");
         HttpResponse response = client.execute(request);
 
         String json = EntityUtils.toString(response.getEntity());
@@ -37,7 +37,7 @@ public class AirportAPI {
     }
     public static Airport getAirport(String airport_name) throws IOException {
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/airports/"+airport_name);
+        HttpGet request = new HttpGet("http://localhost:8082/airports/"+airport_name);
         HttpResponse response = client.execute(request);
         String json = EntityUtils.toString(response.getEntity());
         ObjectMapper objectMapper = new ObjectMapper();

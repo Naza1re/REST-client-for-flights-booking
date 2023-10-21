@@ -19,7 +19,7 @@ public class PlaneAPI {
     public static List<Plane> getAllPlaneOfAirport(String airport_name) throws IOException {
 
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/"+airport_name+"/planes/all-planes");
+        HttpGet request = new HttpGet("http://localhost:8082/"+airport_name+"/planes/all-planes");
         HttpResponse response = client.execute(request);
 
         String json = EntityUtils.toString(response.getEntity());

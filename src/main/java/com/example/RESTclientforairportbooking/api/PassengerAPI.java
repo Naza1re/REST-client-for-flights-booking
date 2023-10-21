@@ -35,7 +35,7 @@ public class PassengerAPI {
     public static Passenger getPassengerById(String airportName,long id,Long seat_id) throws IOException {
 
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/"+airportName+"/flights/"+id+"/passengers/"+seat_id);
+        HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/flights/"+id+"/passengers/"+seat_id);
 
         HttpResponse response = client.execute(request);
 

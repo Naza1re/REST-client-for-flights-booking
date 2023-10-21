@@ -15,7 +15,7 @@ public class ReservationAPI {
     public static void makeReservation(String id, long idSeat, String name, String airport_name) throws IOException {
         User user  = UserAPI.getUserByName(name);
         HttpClient client = HttpClients.createDefault();
-        HttpPatch request = new HttpPatch( "http://localhost:8081/"+airport_name+"/flights/"+id+"/passenger/"+idSeat);
+        HttpPatch request = new HttpPatch( "http://localhost:8082/"+airport_name+"/flights/"+id+"/passenger/"+idSeat);
 
         request.setHeader("Content-Type", "application/json");
 

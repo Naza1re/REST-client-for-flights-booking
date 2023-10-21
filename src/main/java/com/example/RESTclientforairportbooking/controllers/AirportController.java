@@ -38,6 +38,14 @@ public class AirportController {
         model.addAttribute("pilot_list",pilotList);
         return "airport";
     }
+    @GetMapping("/contacts")
+    public String getContactsPage(){
+        return "contacts";
+    }
+    @GetMapping("/about")
+    public String getAboutPage(){
+        return "about";
+    }
 
 
 

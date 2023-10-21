@@ -7,20 +7,26 @@
         body {
             font-family: Arial, sans-serif;
         }
+        body {
+            background-image: url('http://ic.pics.livejournal.com/sverdlovskavia/75593640/1228492/1228492_original.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blur: 250px;
+        }
         .container {
             display: flex;
             justify-content: space-around;
             margin: 50px;
         }
         .pilots-table, .planes-table {
-            border: 1px solid #7f75e0;
+            border: 1px solid #2813de;
             border-radius: 10px;
             padding: 50px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
-            color: #7f75e0;
+            color: #2a16d0;
         }
         table {
             width: 100%;
@@ -32,13 +38,16 @@
             padding: 8px;
         }
         th {
-            background-color: #7f75e0;
+            background-color: #2414d2;
             color: white;
         }
         .plane {
-            color: #7f75e0;
+            color: #3524cb;
             text-decoration: none;
             font-weight: bold;
+        }
+        .planes-table td {
+            text-align: center;
         }
     </style>
 </head>
@@ -53,7 +62,7 @@
         <h2>Наши Пилоты</h2>
         <table>
             <tr>
-                <th>ФИО</th>
+                <th>ФИО пилота</th>
                 <th>Стаж</th>
             </tr>
             <tr th:each="pilotList : ${pilot_list}">
@@ -68,11 +77,11 @@
         <table>
             <tr>
                 <th>Название</th>
-                <th>Айдишник самолета</th>
+                <th>Колличетсво полётов</th>
             </tr>
             <tr th:each="planeList : ${plane_list}">
-                <td th:text="${planeList.name}">Название самолета</td>
-                <td th:text="${planeList.id}">Айдишник</td>
+                <td th:text="${planeList.name}"></td>
+                <td th:text="${planeList.count_flights}"></td>
             </tr>
         </table>
     </div>

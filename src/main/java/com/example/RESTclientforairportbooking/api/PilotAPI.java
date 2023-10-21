@@ -17,7 +17,7 @@ public class PilotAPI {
     public static List<Pilot> getAllPilotOfAirport(String airportName) throws IOException {
 
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/"+airportName+"/pilots/all-pilots");
+        HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/pilots/all-pilots");
         HttpResponse response = client.execute(request);
 
         String json = EntityUtils.toString(response.getEntity());
