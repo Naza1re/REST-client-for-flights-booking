@@ -35,8 +35,20 @@ public class Flights   {
     private Pilot pilot;
 
 
-
-
+    @Override
+    public String toString() {
+        return "Flights{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                ", departure_date='" + departure_date + '\'' +
+                ", departure_time='" + departure_time + '\'' +
+                ", arrival='" + arrival + '\'' +
+                ", airport=" + airport +
+                ", pilot=" + pilot +
+                ", plane=" + plane +
+                '}';
+    }
 
     public Flights(String name, String departure_date, String departure_time, String arrival) {
         this.name = name;

@@ -18,7 +18,7 @@ public class PassengerAPI {
 
     public static List<Passenger> getAllPassengersOfPlane(long id,String airportName) throws IOException {
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("http://localhost:8081/"+airportName+"/flights/"+id+"/passengers");
+        HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/flights/"+id+"/passengers");
 
         HttpResponse response = client.execute(request);
 
