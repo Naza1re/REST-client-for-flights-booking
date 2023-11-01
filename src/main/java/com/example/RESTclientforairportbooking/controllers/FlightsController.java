@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/{airport_name}/flights")
@@ -41,10 +42,16 @@ public class FlightsController {
         return "add-plane";
     }
     @GetMapping("/{id}/add-pilot")
-    public String addPilotPage(Model model, @PathVariable String airport_name, @PathVariable String id) throws IOException {
+    public String addPilotPage(Model model, @PathVariable String airport_name, @PathVariable Long id) throws IOException {
         List<Pilot> pilotList = PilotAPI.getAllFreePilotOfAirport(airport_name);
         model.addAttribute("pilotList",pilotList);
         return "add-pilot";
+    }
+    @PostMapping("/{id}/add-pilot/{pilot_id}")
+    public String addPilotToFlight(@PathVariable String airport_name, @PathVariable Long id, @PathVariable Long pilot_id) throws IOException {
+        PilotAPI.addPilotToFlight(id,pilot_id,airport_name);
+
+        return "redirect:/airports/all-airports";
     }
 
 

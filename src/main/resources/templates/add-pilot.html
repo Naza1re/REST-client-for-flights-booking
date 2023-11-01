@@ -5,28 +5,29 @@
     <title>Title</title>
 </head>
 <style>
-    .table{
+    .table {
         text-align: center;
     }
-
-
-
-
 </style>
-<header th:insert="blogs/header :: header">
-</header>
+<header th:insert="blogs/header :: header"></header>
 <body>
 <table class="table">
     <tr>
         <th>Пилот</th>
         <th>Стаж работы</th>
-
+        <th>Действия</th> <!-- Добавлен заголовок для столбца с кнопками -->
     </tr>
 
     <tr class="airport" th:each="pilot : ${pilotList}">
         <td th:text="${pilot.name}"></td>
         <td th:text="${pilot.age}"></td>
+        <td>
+            <form method="post" th:action="@{'/' + ${airport_name}+'/flights/'+${id}+'/add-pilot/'+${pilot.id}}">
+                <button type="submit">Добавить пилота</button>
+            </form>
+        </td>
     </tr>
+
 </table>
 
 </body>

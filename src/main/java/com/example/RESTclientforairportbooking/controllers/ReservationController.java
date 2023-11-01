@@ -32,7 +32,7 @@ public class ReservationController {
     @PostMapping("/passengers/{id_seat}")
     public String makeReservation(@RequestParam  String name ,@PathVariable String airport_name, @PathVariable String id, @PathVariable long id_seat) throws IOException {
         ReservationAPI.makeReservation(id,id_seat,name,airport_name);
-        return "main";
+        return "redirect:/airports/all-airports";
     }
 
 

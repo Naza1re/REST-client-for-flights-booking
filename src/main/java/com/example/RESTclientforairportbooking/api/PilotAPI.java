@@ -1,19 +1,26 @@
 package com.example.RESTclientforairportbooking.api;
 
 import com.example.RESTclientforairportbooking.model.Airport;
+import com.example.RESTclientforairportbooking.model.Flights;
 import com.example.RESTclientforairportbooking.model.Pilot;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class PilotAPI {
+    //All pilot list
     public static List<Pilot> getAllPilotOfAirport(String airportName) throws IOException {
 
         HttpClient client = HttpClients.createDefault();
@@ -29,7 +36,7 @@ public class PilotAPI {
         return pilots;
 
     }
-
+    //Free pilot list
     public static List<Pilot> getAllFreePilotOfAirport(String airportName) throws IOException {
         HttpClient client = HttpClients.createDefault();
         HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/pilots/free");
@@ -38,5 +45,22 @@ public class PilotAPI {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Pilot> pilots = objectMapper.readValue(json, new TypeReference<List<Pilot>>() {});
         return pilots;
+    }
+
+
+
+    public static void addPilotToFlight(Long id, Long pilot_id,String airport_name) throws IOException {
+        String apiUrl = "http://localhost:8082/" + airport_name + "/flights/" + id + "/add-pilot/" + pilot_id;
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+
+        int responseCode = connection.getResponseCode();
+        System.out.println("Response Code: " + responseCode);
+
+
+        connection.disconnect();
+
     }
 }
