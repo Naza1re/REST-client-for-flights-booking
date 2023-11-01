@@ -15,7 +15,7 @@
 
       table {
         width: 80%;
-        margin: 250px auto;
+        margin: 150px auto;
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 10px;
         padding: 20px;
@@ -23,6 +23,8 @@
         font-size: 16px;
         color: #333;
           font-weight: 700;
+        border: 3px solid purple;
+        border-bottom: 1px solid #ddd;
       }
       .airport{
 
@@ -34,6 +36,9 @@
       }
       .table{
         text-align: center;
+      }
+      .table tbody tr {
+        border-bottom: 1px solid #ddd;
       }
 
 
@@ -55,16 +60,22 @@
     <th>Пилот</th>
     <th>Самолет</th>
     <th>Бронирование</th>
+    <th>Добавить самолет</th>
+    <th>ДобавитЬ пилота</th>
 
   </tr>
 
   <tr th:each="flights : ${flightsOfAirport}">
+
     <td  th:text="${flights.name}"></td>
     <td th:text="${flights.departure_date}"></td>
     <td th:text="${flights.departure_time}"></td>
     <td th:text="${flights.pilot != null ? flights.pilot.name : 'Нет пилота'}"></td>
     <td th:text="${flights.plane != null ? flights.plane.name : 'Нет Самолета'}"></td>
       <td><a th:href="@{'/' + ${airport} + '/flights/'+${flights.id}+'/passengers'}" class="btn-book">Забронировать</a></td>
+    <td><a th:href="@{'/'+${airport}+'/flights/'+${flights.id}+'/add-plane'}"> Добавить самолет</a> </td>
+    <td><a th:href="@{'/'+${airport}+'/flights/'+${flights.id}+'/add-pilot'}">Добавить пилота</a></td>
+
   </tr>
 </table>
 

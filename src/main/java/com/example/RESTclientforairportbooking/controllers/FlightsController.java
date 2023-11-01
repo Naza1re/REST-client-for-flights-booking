@@ -1,7 +1,11 @@
 package com.example.RESTclientforairportbooking.controllers;
 
 import com.example.RESTclientforairportbooking.api.FlightsAPI;
+import com.example.RESTclientforairportbooking.api.PilotAPI;
+import com.example.RESTclientforairportbooking.api.PlaneAPI;
 import com.example.RESTclientforairportbooking.model.Flights;
+import com.example.RESTclientforairportbooking.model.Pilot;
+import com.example.RESTclientforairportbooking.model.Plane;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +30,24 @@ public class FlightsController {
     }
     @PostMapping("/add-flight")
     public String addFlight(@PathVariable String airport_name,@ModelAttribute Flights flights) throws IOException {
-        System.out.println(flights);
         FlightsAPI.createFlight(airport_name,flights);
-        return "flights";
+        return "redirect:/airports/all-airports";
     }
+    @GetMapping("/{id}/add-plane")
+    public String addPlanePage(@PathVariable String airport_name, @PathVariable String id,Model model) throws IOException {
+        List<Plane> planeList = PlaneAPI.getAllFreePlaneOfAirport(airport_name);
+        model.addAttribute("airport_name",airport_name);
+        model.addAttribute("planeList",planeList);
+        return "add-plane";
+    }
+    @GetMapping("/{id}/add-pilot")
+    public String addPilotPage(Model model, @PathVariable String airport_name, @PathVariable String id) throws IOException {
+        List<Pilot> pilotList = PilotAPI.getAllFreePilotOfAirport(airport_name);
+        model.addAttribute("pilotList",pilotList);
+        return "add-pilot";
+    }
+
+
 
 
 

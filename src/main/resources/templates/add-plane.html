@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление самолета на рейс</title>
+</head>
+<header th:insert="blogs/header :: header">
+</header>
+<body>
+<table>
+    <tr>
+        <th>Самолет</th>
+        <th>Количество полетов</th>
+
+    </tr>
+
+    <tr class="airport" th:each="plane : ${planeList}">
+        <td th:text="${plane.name}"></td>
+        <td th:text="${plane.count_flights}"></td>
+    </tr>
+</table>
+</body>
+</html>

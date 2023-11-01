@@ -29,6 +29,15 @@ public class PlaneAPI {
 
         return planeList;
     }
+    public static List<Plane> getAllFreePlaneOfAirport(String airport_name) throws IOException {
+        HttpClient client = HttpClients.createDefault();
+        HttpGet request = new HttpGet("http://localhost:8082/"+airport_name+"/planes/free");
+        HttpResponse response = client.execute(request);
+        String json = EntityUtils.toString(response.getEntity());
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Plane> planeList =objectMapper.readValue(json, new TypeReference<List<Plane>>() {});
+        return planeList;
+    }
 
 
 

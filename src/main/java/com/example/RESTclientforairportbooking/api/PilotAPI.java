@@ -29,4 +29,14 @@ public class PilotAPI {
         return pilots;
 
     }
+
+    public static List<Pilot> getAllFreePilotOfAirport(String airportName) throws IOException {
+        HttpClient client = HttpClients.createDefault();
+        HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/pilots/free");
+        HttpResponse response = client.execute(request);
+        String json = EntityUtils.toString(response.getEntity());
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Pilot> pilots = objectMapper.readValue(json, new TypeReference<List<Pilot>>() {});
+        return pilots;
+    }
 }
