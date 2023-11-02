@@ -11,12 +11,18 @@
     <tr>
         <th>Самолет</th>
         <th>Количество полетов</th>
+        <th>Добавить</th>
 
     </tr>
 
     <tr class="airport" th:each="plane : ${planeList}">
         <td th:text="${plane.name}"></td>
         <td th:text="${plane.count_flights}"></td>
+        <td>
+            <form method="post" th:action="@{'/' + ${airport_name}+'/flights/'+${id}+'/add-plane/'+${plane.id}}">
+                <button type="submit">Добавить самолет</button>
+            </form>
+        </td>
     </tr>
 </table>
 </body>

@@ -53,6 +53,12 @@ public class FlightsController {
 
         return "redirect:/airports/all-airports";
     }
+    @PostMapping("/{id}/add-plane/{plane_id}")
+    public String addPlaneToFlight(@PathVariable String airport_name, @PathVariable Long id, @PathVariable Long plane_id) throws IOException {
+        PilotAPI.addPlaneToFlight(id,plane_id,airport_name);
+        return "redirect:/airports/all-airports";
+    }
+
 
 
 

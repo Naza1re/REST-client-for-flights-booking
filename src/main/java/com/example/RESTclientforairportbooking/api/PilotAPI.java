@@ -49,8 +49,29 @@ public class PilotAPI {
 
 
 
-    public static void addPilotToFlight(Long id, Long pilot_id,String airport_name) throws IOException {
-        String apiUrl = "http://localhost:8082/" + airport_name + "/flights/" + id + "/add-pilot/" + pilot_id;
+
+
+    public static void addPlaneToFlight(Long id, Long planeId, String airportName) throws IOException {
+        String apiUrl = "http://localhost:8082/" + airportName + "/flights/" + id + "/add-plane/" + planeId;
+
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+
+        int responseCode = connection.getResponseCode();
+        System.out.println("Response Code: " + responseCode);
+
+
+        connection.disconnect();
+
+
+    }
+
+    public static void addPilotToFlight(Long id, Long pilotId, String airportName) throws IOException {
+
+        String apiUrl = "http://localhost:8082/" + airportName + "/flights/" + id + "/add-pilot/" + pilotId;
+
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");

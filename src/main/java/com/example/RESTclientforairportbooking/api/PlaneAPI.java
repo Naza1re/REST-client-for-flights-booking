@@ -11,6 +11,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 public class PlaneAPI {
@@ -37,6 +39,18 @@ public class PlaneAPI {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Plane> planeList =objectMapper.readValue(json, new TypeReference<List<Plane>>() {});
         return planeList;
+    }
+    public static void addPlaneToFlight(Long id, Long plane_id,String airport_name) throws IOException {
+        String apiUrl = "http://localhost:8082/" + airport_name + "/flights/" + id + "/add-pilot/" + plane_id;
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+
+        int responseCode = connection.getResponseCode();
+        System.out.println("Response Code: " + responseCode);
+        connection.disconnect();
+
     }
 
 
