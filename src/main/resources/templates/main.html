@@ -10,6 +10,9 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-blur: 250px;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
 
         h1 {
@@ -23,7 +26,7 @@
         .search-bar {
             text-align: center;
             margin-top: 20px;
-            width:100%;
+            width: 100%;
         }
 
         .search-input {
@@ -44,7 +47,8 @@
             color: #333;
         }
 
-        th, td {
+        th,
+        td {
             padding: 5px;
             text-align: center;
             font-size: 16px;
@@ -70,8 +74,29 @@
             font-weight: 400;
         }
 
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: falling linear infinite;
+            box-shadow: 1px 1px 3px 0px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes falling {
+            0% {
+                transform: translateY(-10%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
     </style>
 </head>
+
 <header th:insert="blogs/header :: header">
 </header>
 
@@ -100,6 +125,32 @@
         <td><a th:href="@{'/' + ${airport.name} + '/flights/all-flights'}" class="btn-book">Рейсы</a></td>
     </tr>
 </table>
+<a href="/airports/add-airport" class="btn-book">Добавить аэропорт</a>
+
+<script>
+    function createSnowflakes() {
+        const numberOfSnowflakes = 50;
+        const container = document.body;
+
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.top = `${Math.random() * 100}vh`;
+            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            snowflake.style.animationDelay = `${Math.random()}s`;
+            container.appendChild(snowflake);
+
+            snowflake.addEventListener("animationiteration", () => {
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.top = `-10vh`;
+            });
+        }
+    }
+
+    createSnowflakes();
+</script>
+
 </body>
 
 </html>
