@@ -26,7 +26,11 @@ public class AirportController {
     @PostMapping("/add-airport")
     public String addAirport(@ModelAttribute Airport airport) throws IOException {
         AirportAPI.save(airport);
-        return "main";
+        return "redirect:/airports/all-airports";
+    }
+    @GetMapping("/add-airport")
+    public String addAirportPage(){
+        return "add-airport";
     }
     @GetMapping("/{airport_name}")
     public String getAirport(@PathVariable String airport_name,Model model) throws IOException {
@@ -35,6 +39,7 @@ public class AirportController {
         List<Plane> planeList = PlaneAPI.getAllPlaneOfAirport(airport_name);
         model.addAttribute("plane_list",planeList);
         List<Pilot> pilotList = PilotAPI.getAllPilotOfAirport(airport_name);
+        System.out.println(pilotList);
         model.addAttribute("pilot_list",pilotList);
         return "airport";
     }
@@ -45,6 +50,16 @@ public class AirportController {
     @GetMapping("/about")
     public String getAboutPage(){
         return "about";
+    }
+    @GetMapping("/{airport_name}/add-plane")
+    public String getAddPlanePage(Model model,@PathVariable String airport_name){
+        model.addAttribute("airport_name",airport_name);
+        return "create-plane";
+    }
+    @PostMapping("/{airport_name}/add-plane")
+    public String createPlane(@ModelAttribute Plane plane, @PathVariable String airport_name) throws IOException {
+        PlaneAPI.createPlaneOfAirport(plane,airport_name);
+        return "redirect:/airports/all-airports";
     }
 
 

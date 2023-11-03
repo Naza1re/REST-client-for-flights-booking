@@ -7,12 +7,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class PlaneAPI {
@@ -54,6 +59,16 @@ public class PlaneAPI {
     }
 
 
+    public static void createPlaneOfAirport(Plane plane, String airportName) throws IOException {
+        System.out.println(plane);
+        HttpClient client = HttpClients.createDefault();
+        HttpPost request = new HttpPost( "http://localhost:8082/"+airportName+"/planes/add-plane");
+        request.setHeader("Content-Type", "application/json");
 
-
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonUser = objectMapper.writeValueAsString(plane);
+        StringEntity entity = new StringEntity(jsonUser, StandardCharsets.UTF_8);
+        request.setEntity(entity);
+        HttpResponse response = client.execute(request);
+    }
 }

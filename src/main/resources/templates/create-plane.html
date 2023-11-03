@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Создание самолета</title>
 </head>
 <body>
-$END$
+<form method="post" th:action="@{'/airports/' +${airport_name}+ '/add-plane' }">
+<input type="text" name="name" class="form-input" placeholder="Название самолета" required><br>
+<input type="text" name="count_flights" class="form-input" placeholder="Количество полетов" required><br>
+<button type="submit" class="form-button">Создать самолет</button>
+</form>
+
 </body>
 </html>

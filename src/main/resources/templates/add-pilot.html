@@ -1,34 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Добавление пилота на рейс</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        .table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #e6e6e6;
+        }
+
+        form {
+            display: inline;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-<style>
-    .table {
-        text-align: center;
-    }
-</style>
-<header th:insert="blogs/header :: header"></header>
+<header th:insert="blogs/header :: header">
+</header>
+
 <body>
+
 <table class="table">
     <tr>
         <th>Пилот</th>
         <th>Стаж работы</th>
-        <th>Действия</th> <!-- Добавлен заголовок для столбца с кнопками -->
+        <th>Действия</th>
     </tr>
 
     <tr class="airport" th:each="pilot : ${pilotList}">
         <td th:text="${pilot.name}"></td>
         <td th:text="${pilot.age}"></td>
         <td>
-            <form method="post" th:action="@{'/' + ${airport_name}+'/flights/'+${id}+'/add-pilot/'+${pilot.id}}">
+            <form method="post"
+                  th:action="@{'/' + ${airport_name}+'/flights/'+${id}+'/add-pilot/'+${pilot.id}}">
                 <button type="submit">Добавить пилота</button>
             </form>
         </td>
     </tr>
-
 </table>
-
 </body>
+
 </html>

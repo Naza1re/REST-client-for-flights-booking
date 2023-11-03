@@ -32,6 +32,14 @@ public class Airport {
 
     private List<Pilot> pilotList;
 
+    public Airport(String name,String city,String street){
+        this.name = name;
+        this.city=city;
+        this.street = street;
+
+    }
+
+
 
 
 

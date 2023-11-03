@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form method="post" action="/airports/add-airport">
+    <input type="text" name="name" class="form-input" placeholder="Имя аэропорта" required><br>
+    <input type="text" name="city" class="form-input" placeholder="Город" required><br>
+    <input type="text" name="street" class="form-input" placeholder="Улица" required><br>
+    <button type="submit" class="form-button">Создать Аэропорт</button>
+</form>
+
 </body>
 </html>

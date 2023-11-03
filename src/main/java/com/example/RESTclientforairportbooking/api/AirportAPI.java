@@ -19,6 +19,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class AirportAPI {
@@ -49,8 +50,13 @@ public class AirportAPI {
 
     public static void save(Airport airport) throws IOException {
         HttpClient client = new DefaultHttpClient();
-        HttpPost post = new HttpPost("http://airports/add-airport");
-        post.setEntity((HttpEntity) airport);
-        HttpResponse response = client.execute(post);
+        HttpPost request = new HttpPost("http://localhost:8082/airports/add-airport");
+        request.setHeader("Content-Type", "application/json");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonUser = objectMapper.writeValueAsString(airport);
+        StringEntity entity = new StringEntity(jsonUser, StandardCharsets.UTF_8);
+        request.setEntity(entity);
+        HttpResponse response = client.execute(request);
     }
 }

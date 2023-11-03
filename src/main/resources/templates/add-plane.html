@@ -1,29 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Добавление самолета на рейс</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url('https://cdn.iportal.ru/news/2020/99/preview/11c38562c19a734201d40f483ce546df07300265_2552_1436_c.JPG');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blur: 250px;
+        }
+
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #007bff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #cce5ff;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #b3d7ff;
+        }
+
+        form {
+            display: inline;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <header th:insert="blogs/header :: header">
 </header>
 <body>
+
 <table>
     <tr>
         <th>Самолет</th>
         <th>Количество полетов</th>
         <th>Добавить</th>
-
     </tr>
 
     <tr class="airport" th:each="plane : ${planeList}">
         <td th:text="${plane.name}"></td>
         <td th:text="${plane.count_flights}"></td>
         <td>
-            <form method="post" th:action="@{'/' + ${airport_name}+'/flights/'+${id}+'/add-plane/'+${plane.id}}">
+            <form method="post"
+                  th:action="@{'/' + ${airport_name}+'/flights/'+${id}+'/add-plane/'+${plane.id}}">
                 <button type="submit">Добавить самолет</button>
             </form>
         </td>
     </tr>
 </table>
+<a  th:href="@{'/airports/' + ${airport_name} + '/add-plane'}" class="table-header" >Создать самолет Аэропорту</a>
 </body>
+
 </html>

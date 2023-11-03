@@ -26,17 +26,14 @@ public class Plane {
     @JsonIgnore
     private Airport airport;
 
-
     private int count_flights;
-
-
-
-
-
-
-
 
     public Plane() {
 
+    }
+
+    public Plane(String name,int count_flights){
+        this.name = name;
+        this.count_flights = count_flights;
     }
 }
