@@ -59,7 +59,17 @@ public class AirportController {
     @PostMapping("/{airport_name}/add-plane")
     public String createPlane(@ModelAttribute Plane plane, @PathVariable String airport_name) throws IOException {
         PlaneAPI.createPlaneOfAirport(plane,airport_name);
-        return "redirect:/airports/all-airports";
+        return "redirect:/airports/"+airport_name;
+    }
+    @GetMapping("/{airport_name}/add-pilot")
+    public String createPilotPage(@PathVariable String airport_name,Model model){
+        model.addAttribute("airport_name",airport_name);
+        return "create-pilot";
+    }
+    @PostMapping("/{airport_name}/add-pilot")
+    public String createPilot(@ModelAttribute Pilot pilot ,@PathVariable String airport_name) throws IOException {
+        PilotAPI.createPlane(airport_name,pilot);
+        return "redirect:/airports/"+airport_name;
     }
 
 

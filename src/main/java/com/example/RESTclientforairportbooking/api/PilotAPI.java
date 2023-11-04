@@ -15,12 +15,13 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class PilotAPI {
-    //All pilot list
+
     public static List<Pilot> getAllPilotOfAirport(String airportName) throws IOException {
 
         HttpClient client = HttpClients.createDefault();
@@ -36,7 +37,7 @@ public class PilotAPI {
         return pilots;
 
     }
-    //Free pilot list
+
     public static List<Pilot> getAllFreePilotOfAirport(String airportName) throws IOException {
         HttpClient client = HttpClients.createDefault();
         HttpGet request = new HttpGet("http://localhost:8082/"+airportName+"/pilots/free");
@@ -83,5 +84,17 @@ public class PilotAPI {
 
         connection.disconnect();
 
+    }
+
+    public static void createPlane(String airportName, Pilot pilot) throws IOException {
+        HttpClient client = HttpClients.createDefault();
+        HttpPost request = new HttpPost( "http://localhost:8082/"+airportName+"/pilots/add-pilot");
+        request.setHeader("Content-Type", "application/json");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonUser = objectMapper.writeValueAsString(pilot);
+        StringEntity entity = new StringEntity(jsonUser, StandardCharsets.UTF_8);
+        request.setEntity(entity);
+        HttpResponse response = client.execute(request);
     }
 }

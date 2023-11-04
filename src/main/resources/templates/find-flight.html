@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-image: url('https://ic.pics.livejournal.com/sverdlovskavia/75593640/1228196/1228196_original.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blur: 250px;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 80%;
+            margin: 150px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            color: #333;
+            font-weight: 700;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .airport {
+            margin-left: auto;
+            margin-right: auto;
+            width: 15em;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-book {
+            text-decoration: none;
+            background-color: #004df8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-book:hover {
+            background-color: #2a16d0;
+        }
+    </style>
+</head>
+<header th:insert="blogs/header :: header">
+</header>
+<body>
+
+<table>
+    <tr>
+        <th>Рейс</th>
+        <th>Дата отправления</th>
+        <th>Время отправления</th>
+        <th>Пилот</th>
+        <th>Самолет</th>
+        <th>Бронирование</th>
+    </tr>
+
+    <tr th:each="flight : ${flights}">
+        <td th:text="${flight.name}"></td>
+        <td th:text="${flight.departure_date}"></td>
+        <td th:text="${flight.departure_time}"></td>
+        <td th:text="${flight.pilot != null ? flight.pilot.name : 'Нет пилота'}"></td>
+        <td th:text="${flight.plane != null ? flight.plane.name : 'Нет самолета'}"></td>
+
+
+    </tr>
+</table>
+
+
+</body>
+
+</html>

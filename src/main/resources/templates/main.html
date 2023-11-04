@@ -105,7 +105,10 @@
 <h1>BOOKING FLIGHTS</h1>
 
 <div class="search-bar">
-    <input type="text" class="search-input" placeholder="Куда летим">
+    <form method="get" action="/find-flight">
+    <input type="text" name="city" class="search-input" placeholder="Введите город">
+        <button type="submit">Найти полеты</button>
+    </form>
 </div>
 
 <table>

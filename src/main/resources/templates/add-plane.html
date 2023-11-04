@@ -56,6 +56,15 @@
             padding: 8px 16px;
             cursor: pointer;
         }
+        .btn-book {
+            background-color: #0815ec;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
 
         button:hover {
             background-color: #0056b3;
@@ -84,7 +93,7 @@
         </td>
     </tr>
 </table>
-<a  th:href="@{'/airports/' + ${airport_name} + '/add-plane'}" class="table-header" >Создать самолет Аэропорту</a>
+<a  th:href="@{'/airports/' + ${airport_name} + '/add-plane'}" class="btn-book" >Создать самолет Аэропорту</a>
 </body>
 
 </html>

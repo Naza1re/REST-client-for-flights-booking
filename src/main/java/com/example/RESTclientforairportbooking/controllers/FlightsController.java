@@ -51,12 +51,12 @@ public class FlightsController {
     public String addPilotToFlight(@PathVariable String airport_name, @PathVariable Long id, @PathVariable Long pilot_id) throws IOException {
         PilotAPI.addPilotToFlight(id,pilot_id,airport_name);
 
-        return "redirect:/airports/all-airports";
+        return "redirect:/"+airport_name+"/flights/all-flights";
     }
     @PostMapping("/{id}/add-plane/{plane_id}")
     public String addPlaneToFlight(@PathVariable String airport_name, @PathVariable Long id, @PathVariable Long plane_id) throws IOException {
         PilotAPI.addPlaneToFlight(id,plane_id,airport_name);
-        return "redirect:/airports/all-airports";
+        return "redirect:/"+airport_name+"/flights/all-flights";
     }
 
 
